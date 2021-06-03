@@ -4,7 +4,7 @@ import {
   TACHES_LIST_SUCCESS,
 } from "../constants/TachesConstants";
 
-export const listTachesReducer = (state = { taches: [] }, action) => {
+const listTachesReducer = (state = { taches: [] }, action) => {
   switch (action.type) {
     case TACHES_LIST_REQUEST:
       return { loading: true, taches: [] };
@@ -18,3 +18,5 @@ export const listTachesReducer = (state = { taches: [] }, action) => {
       return state;
   }
 };
+
+export { listTachesReducer };

@@ -1,28 +1,28 @@
-import { Button } from "react-bootstrap"
-import React, { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { Table } from "react-bootstrap"
-import AddPersonnel from "./AddPersonnel"
-import { listPersonnels } from "../actions/PersonnelsActions"
-import Loader from "./Loader"
-import Message from "./Message"
+import { Button } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Table } from "react-bootstrap";
+import AddPersonnel from "./AddPersonnel";
+import { listPersonnels } from "../actions/PersonnelsActions";
+import Loader from "./Loader";
+import Message from "./Message";
 
 function Affectations() {
-  const [showCreateForm, setShowCreateForm] = useState(false)
+  const [showCreateForm, setShowCreateForm] = useState(false);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const { loading, personnels, error } = useSelector(
     (state) => state.personnels
-  )
+  );
 
   useEffect(() => {
-    dispatch(listPersonnels())
-  }, [dispatch])
+    dispatch(listPersonnels());
+  }, [dispatch]);
 
   const handleCloseCreateForm = () => {
-    setShowCreateForm(false)
-  }
+    setShowCreateForm(false);
+  };
 
   return (
     <>
@@ -75,7 +75,7 @@ function Affectations() {
                       </Button>
                     </td>
                   </tr>
-                )
+                );
               })}
             </tbody>
           </Table>
@@ -87,7 +87,7 @@ function Affectations() {
         handleCloseCreateForm={handleCloseCreateForm}
       />
     </>
-  )
+  );
 }
 
-export default Affectations
+export default Affectations;
