@@ -52,6 +52,12 @@ function Sidebar() {
             <span>Liste des personnels</span>
           </Link>
         </li>
+        <li className="nav-item active">
+          <Link className="nav-link" to="/affectations">
+            <i className="fas fa-tasks"></i>
+            <span>Affectations</span>
+          </Link>
+        </li>
       </ul>
     </>
   );

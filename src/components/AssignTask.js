@@ -9,13 +9,16 @@ import {
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { listPersonnels } from "../actions/PersonnelsActions";
+import { listTaches } from "../actions/TachesActions";
 
 function AssignTask() {
   const dispatch = useDispatch();
 
   const { personnels } = useSelector((state) => state.personnels);
+  const { taches } = useSelector((state) => state.taches);
 
   useEffect(() => {
+    dispatch(listTaches());
     dispatch(listPersonnels());
   }, [dispatch]);
 
@@ -37,17 +40,17 @@ function AssignTask() {
               <Form.Label>Personnel</Form.Label>
               <Form.Control as="select" custom>
                 {personnels.map((personnel) => {
-                  return <option value="Casablanca">Mohamed</option>;
+                  return <option value={personnel.nom}>{personnel.nom}</option>;
                 })}
               </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="tache">
-              <Form.Label>Tâche</Form.Label>
+              <Form.Label>Tache</Form.Label>
               <Form.Control as="select" custom>
-                <option value="Casablanca">1</option>
-                <option value="El Jadida">2</option>
-                <option value="Salé">3</option>
+                {taches.map((tache) => {
+                  return <option value={tache.nom}>{tache.nom}</option>;
+                })}
               </Form.Control>
             </Form.Group>
 

@@ -1,10 +1,9 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import Header from "./components/Header"
-import Footer from "./components/Footer"
-import Sidebar from "./components/Sidebar"
-import ZonesVerts from "./components/ZonesVerts"
-import PersonnelsList from "./components/PersonnelsList"
-import AssignTask from "./components/AssignTask"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import ZonesVerts from "./components/ZonesVerts";
+import PersonnelsList from "./components/PersonnelsList";
+import AssignTask from "./components/AssignTask";
+import Assignments from "./components/Assignments";
 
 function App() {
   return (
@@ -25,13 +24,14 @@ function App() {
               <Route path="/zones-verts" component={ZonesVerts} />
               <Route path="/types-zones" component={ZonesVerts} />
               <Route path="/personnels" component={PersonnelsList} />
-              <Route path="/assign-task" component={AssignTask} />
+              <Route path="/affecter-tache" component={AssignTask} />
+              <Route path="/affectations" component={Assignments} />
             </Switch>
           </div>
         </div>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

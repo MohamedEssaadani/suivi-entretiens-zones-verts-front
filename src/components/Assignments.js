@@ -6,8 +6,9 @@ import AddPersonnel from "./AddPersonnel";
 import { listPersonnels } from "../actions/PersonnelsActions";
 import Loader from "./Loader";
 import Message from "./Message";
+import { Link } from "react-router-dom";
 
-function Affectations() {
+function Assignments() {
   const [showCreateForm, setShowCreateForm] = useState(false);
 
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function Affectations() {
         <div className="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 className="h3 mb-0 text-gray-800">
             {" "}
-            <i className="fas fa-users"></i> Personnels
+            <i className="fas fa-users"></i> Affectations
           </h1>
         </div>
         {loading ? (
@@ -46,12 +47,9 @@ function Affectations() {
               <th>Télephone</th>
               <th>Cin</th>
               <th>
-                <Button
-                  className="btn btn-success"
-                  onClick={() => setShowCreateForm(true)}
-                >
-                  <i className="fas fa-user-plus"></i>
-                </Button>
+                <Link className="btn btn-success" to="/affecter-tache">
+                  <i className="fas fa-user-plus"></i> Assign Task
+                </Link>
               </th>
             </thead>
             <tbody>
@@ -81,13 +79,8 @@ function Affectations() {
           </Table>
         )}
       </div>
-
-      <AddPersonnel
-        showCreateForm={showCreateForm}
-        handleCloseCreateForm={handleCloseCreateForm}
-      />
     </>
   );
 }
 
-export default Affectations;
+export default Assignments;
