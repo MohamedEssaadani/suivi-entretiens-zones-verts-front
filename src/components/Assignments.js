@@ -48,7 +48,7 @@ function Assignments() {
               <th>Cin</th>
               <th>
                 <Link className="btn btn-success" to="/affecter-tache">
-                  <i className="fas fa-user-plus"></i> Assign Task
+                  <i className="fas fa-user-plus"></i> Affecter une tâche
                 </Link>
               </th>
             </thead>

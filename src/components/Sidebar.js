@@ -23,7 +23,7 @@ function Sidebar() {
         <li className="nav-item active">
           <a className="nav-link" href="index.html">
             <i className="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+            <span>Tableau de board</span>
           </a>
         </li>
 
