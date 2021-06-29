@@ -41,6 +41,7 @@ function ZonesVerts() {
           <Table className="table-sm" striped hover bordered responsive>
             <thead>
               <th>Nom</th>
+              <th>Type</th>
               <th>Ville</th>
               <th>Surface</th>
               <th>Annee démarage</th>
@@ -56,8 +57,13 @@ function ZonesVerts() {
             <tbody>
               {zonesVerts.map((zone) => {
                 return (
-                  <tr key={zonesVerts.indexOf(zone)}>
+                  <tr
+                    key={zonesVerts
+                      .sort((a, b) => (a.createdDate < b.createdDate ? 1 : -1))
+                      .indexOf(zone)}
+                  >
                     <td>{zone.nom}</td>
+                    <td>{zone.typeZone.nom}</td>
                     <td>{zone.ville}</td>
                     <td>{zone.surface}</td>
                     <td>{zone.anneeDemarage}</td>

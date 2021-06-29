@@ -41,7 +41,7 @@ function AssignTask({ history }) {
   };
   return (
     <Container>
-      <Button variant="secondary" className="mb-3">
+      <Button variant="secondary" className="mb-3" onClick={history.goBack}>
         <i class="fas fa-arrow-left"></i> Retour
       </Button>
       <Card>

@@ -15,7 +15,7 @@ const listZonesVerts = () => async (dispatch) => {
     });
 
     const { data } = await axios.get(
-      "http://localhost:8080/zoneVerts?sort=createdDate,desc"
+      "http://localhost:8080/zoneVerts?projection=zoneVertProjection"
     );
 
     dispatch({

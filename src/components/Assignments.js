@@ -44,23 +44,27 @@ function Assignments() {
               </th>
             </thead>
             <tbody>
-              {assignments.map((assignment) => {
-                return (
-                  <tr key={assignments.indexOf(assignment)}>
-                    <td>
-                      {assignment.personnel.nom} {assignment.personnel.prenom}
-                    </td>
-                    <td>{assignment.tache.nom}</td>
-                    <td>{assignment.dateRealisation}</td>
-                    <td>
-                      {/* <FormCheck value={assignment.effectué}></FormCheck> */}
-                      {assignment.effectué ? (
-                        <span className="badge badge-success">{"Oui"}</span>
-                      ) : (
-                        <span className="badge badge-danger">{"Non"}</span>
-                      )}
-                    </td>
-                    {/* <td>
+              {assignments
+                .sort((a, b) =>
+                  a.dateRealisation < b.dateRealisation ? 1 : -1
+                )
+                .map((assignment) => {
+                  return (
+                    <tr key={assignments.indexOf(assignment)}>
+                      <td>
+                        {assignment.personnel.nom} {assignment.personnel.prenom}
+                      </td>
+                      <td>{assignment.tache.nom}</td>
+                      <td>{assignment.dateRealisation}</td>
+                      <td>
+                        {/* <FormCheck value={assignment.effectué}></FormCheck> */}
+                        {assignment.effectué ? (
+                          <span className="badge badge-success">{"Oui"}</span>
+                        ) : (
+                          <span className="badge badge-danger">{"Non"}</span>
+                        )}
+                      </td>
+                      {/* <td>
                       <Button className="btn btn-primary">
                         <i className="fas fa-eye"></i>
                       </Button>{" "}
@@ -71,9 +75,9 @@ function Assignments() {
                         <i className="fas fa-trash"></i>
                       </Button>
                     </td> */}
-                  </tr>
-                );
-              })}
+                    </tr>
+                  );
+                })}
             </tbody>
           </Table>
         )}

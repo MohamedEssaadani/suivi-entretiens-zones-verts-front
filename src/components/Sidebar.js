@@ -30,12 +30,12 @@ function Sidebar() {
         <hr className="sidebar-divider" />
 
         <div className="sidebar-heading">Zones Verts</div>
-        <li className="nav-item active">
+        {/* <li className="nav-item active">
           <Link className="nav-link" to="/types-zones">
             <i className="fas fa-chart-area"></i>
             <span>Types zones verts</span>
           </Link>
-        </li>
+        </li> */}
 
         <li className="nav-item active">
           <Link className="nav-link" to="/zones-verts">
