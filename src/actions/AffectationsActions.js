@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  ASSIGNMENTS_LIST_FAIL,
+  ASSIGNMENTS_LIST_REQUEST,
+  ASSIGNMENTS_LIST_SUCCESS,
   ASSIGN_TASK_FAIL,
   ASSIGN_TASK_REQUEST,
   ASSIGN_TASK_SUCCESS,
@@ -38,4 +41,27 @@ const assignTask = (affectation) => async (dispatch) => {
   }
 };
 
-export { assignTask };
+const assignmentsList = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: ASSIGNMENTS_LIST_REQUEST,
+    });
+
+    const { data } = await axios.get("http://localhost:8080/affectations");
+
+    dispatch({
+      type: ASSIGNMENTS_LIST_SUCCESS,
+      payload: data._embedded.affectations,
+    });
+  } catch (error) {
+    dispatch({
+      type: ASSIGNMENTS_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export { assignTask, assignmentsList };

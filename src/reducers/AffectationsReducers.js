@@ -1,4 +1,7 @@
 import {
+  ASSIGNMENTS_LIST_FAIL,
+  ASSIGNMENTS_LIST_REQUEST,
+  ASSIGNMENTS_LIST_SUCCESS,
   ASSIGN_TASK_FAIL,
   ASSIGN_TASK_REQUEST,
   ASSIGN_TASK_SUCCESS,
@@ -19,4 +22,19 @@ const assignTaskReducer = (state = { affectation: {} }, action) => {
   }
 };
 
-export { assignTaskReducer };
+const assignmentsReducer = (state = { assignments: [] }, action) => {
+  switch (action.type) {
+    case ASSIGNMENTS_LIST_REQUEST:
+      return { loading: true };
+
+    case ASSIGNMENTS_LIST_SUCCESS:
+      return { loading: false, assignments: action.payload };
+
+    case ASSIGNMENTS_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export { assignTaskReducer, assignmentsReducer };
