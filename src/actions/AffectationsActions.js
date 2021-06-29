@@ -47,7 +47,9 @@ const assignmentsList = () => async (dispatch) => {
       type: ASSIGNMENTS_LIST_REQUEST,
     });
 
-    const { data } = await axios.get("http://localhost:8080/affectations");
+    const { data } = await axios.get(
+      "http://localhost:8080/affectations?projection=affectationProjection"
+    );
 
     dispatch({
       type: ASSIGNMENTS_LIST_SUCCESS,

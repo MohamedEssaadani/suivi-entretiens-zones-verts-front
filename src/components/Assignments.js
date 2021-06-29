@@ -2,8 +2,6 @@ import { Button, FormCheck } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Table } from "react-bootstrap";
-import AddPersonnel from "./AddPersonnel";
-import { getPersonnelById, listPersonnels } from "../actions/PersonnelsActions";
 import Loader from "./Loader";
 import Message from "./Message";
 import { Link } from "react-router-dom";
@@ -49,11 +47,18 @@ function Assignments() {
               {assignments.map((assignment) => {
                 return (
                   <tr key={assignments.indexOf(assignment)}>
-                    <td>{assignment.nom}</td>
-                    <td>{assignment.prenom}</td>
+                    <td>
+                      {assignment.personnel.nom} {assignment.personnel.prenom}
+                    </td>
+                    <td>{assignment.tache.nom}</td>
                     <td>{assignment.dateRealisation}</td>
                     <td>
-                      <FormCheck value={assignment.effectué}></FormCheck>
+                      {/* <FormCheck value={assignment.effectué}></FormCheck> */}
+                      {assignment.effectué ? (
+                        <span className="badge badge-success">{"Oui"}</span>
+                      ) : (
+                        <span className="badge badge-danger">{"Non"}</span>
+                      )}
                     </td>
                     {/* <td>
                       <Button className="btn btn-primary">
