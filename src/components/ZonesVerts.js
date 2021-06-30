@@ -55,32 +55,30 @@ function ZonesVerts() {
               </th>
             </thead>
             <tbody>
-              {zonesVerts.map((zone) => {
-                return (
-                  <tr
-                    key={zonesVerts
-                      .sort((a, b) => (a.createdDate < b.createdDate ? 1 : -1))
-                      .indexOf(zone)}
-                  >
-                    <td>{zone.nom}</td>
-                    <td>{zone.typeZone.nom}</td>
-                    <td>{zone.ville}</td>
-                    <td>{zone.surface}</td>
-                    <td>{zone.anneeDemarage}</td>
-                    <td>
-                      <Button className="btn btn-primary">
-                        <i className="fas fa-eye"></i>
-                      </Button>{" "}
-                      <Button className="btn btn-success">
-                        <i className="fas fa-edit"></i>
-                      </Button>{" "}
-                      <Button className="btn btn-danger">
-                        <i className="fas fa-trash"></i>
-                      </Button>
-                    </td>
-                  </tr>
-                );
-              })}
+              {zonesVerts
+                .sort((a, b) => (a.createdDate < b.createdDate ? 1 : -1))
+                .map((zone) => {
+                  return (
+                    <tr key={zonesVerts.indexOf(zone)}>
+                      <td>{zone.nom}</td>
+                      <td>{zone.typeZone.nom}</td>
+                      <td>{zone.ville}</td>
+                      <td>{zone.surface}</td>
+                      <td>{zone.anneeDemarage}</td>
+                      <td>
+                        <Button className="btn btn-primary">
+                          <i className="fas fa-eye"></i>
+                        </Button>{" "}
+                        <Button className="btn btn-success">
+                          <i className="fas fa-edit"></i>
+                        </Button>{" "}
+                        <Button className="btn btn-danger">
+                          <i className="fas fa-trash"></i>
+                        </Button>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </Table>
         )}
