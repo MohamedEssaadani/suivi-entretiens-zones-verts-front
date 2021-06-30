@@ -14,6 +14,7 @@ function AddZoneVert({ showCreateForm, handleCloseCreateForm }) {
   const [surface, setSurface] = useState(0);
   const [ville, setVille] = useState("");
   const [date, setDate] = useState(new Date());
+  const [typeZone, setTypeZone] = useState(1);
 
   const { typeZoneVerts } = useSelector((state) => state.typeZoneVerts);
 
@@ -31,6 +32,7 @@ function AddZoneVert({ showCreateForm, handleCloseCreateForm }) {
       ville,
       date,
       createdDate: new Date(),
+      typeZone: process.env.REACT_APP_URL + "/typeZoneVerts/" + typeZone,
     };
     dispatch(createZoneVert(zoneVert));
     dispatch(listZonesVerts());
@@ -70,9 +72,13 @@ function AddZoneVert({ showCreateForm, handleCloseCreateForm }) {
 
           <Form.Group controlId="typeZone">
             <Form.Label>Type Zone</Form.Label>
-            <Form.Control as="select" custom>
+            <Form.Control
+              as="select"
+              onChange={(e) => setTypeZone(e.target.value)}
+              custom
+            >
               {typeZoneVerts.map((type) => {
-                return <option value={type.nom}>{type.nom}</option>;
+                return <option value={type.id}>{type.nom}</option>;
               })}
             </Form.Control>
           </Form.Group>
