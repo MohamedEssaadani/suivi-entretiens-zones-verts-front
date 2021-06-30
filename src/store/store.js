@@ -15,9 +15,11 @@ import {
   assignmentsReducer,
   assignTaskReducer,
 } from "../reducers/AffectationsReducers";
+import { TypeZonesVertsReducer } from "../reducers/TypeZonesVertsReducers";
 
 const reducer = combineReducers({
   zonesVerts: zoneVertsReducer,
+  typeZoneVerts: TypeZonesVertsReducer,
   zoneVertsTotal: zoneVertsTotalReducer,
   personnels: personnelsListReducer,
   personnelsTotal: personnelsListTotalReducer,

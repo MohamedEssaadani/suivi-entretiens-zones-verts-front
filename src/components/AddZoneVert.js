@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Button, DropdownButton, Form, Modal } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { Button, Form, Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { listTypeZonesVerts } from "../actions/TypeZonesVertsActions";
 import { createZoneVert, listZonesVerts } from "../actions/ZonesVertsActions";
 
 function AddZoneVert({ showCreateForm, handleCloseCreateForm }) {
   const dispatch = useDispatch();
+
   const [nom, setNom] = useState("");
   const [adresse, setAdresse] = useState("");
   const [longitude, setLongitude] = useState(0);
@@ -12,6 +14,12 @@ function AddZoneVert({ showCreateForm, handleCloseCreateForm }) {
   const [surface, setSurface] = useState(0);
   const [ville, setVille] = useState("");
   const [date, setDate] = useState(new Date());
+
+  const { typeZoneVerts } = useSelector((state) => state.typeZoneVerts);
+
+  useEffect(() => {
+    dispatch(listTypeZonesVerts());
+  }, [dispatch]);
 
   const handleSubmit = () => {
     const zoneVert = {
@@ -31,6 +39,7 @@ function AddZoneVert({ showCreateForm, handleCloseCreateForm }) {
   const handleSelectChange = (e) => {
     setVille(e.target.value);
   };
+
   return (
     <Modal show={showCreateForm} onHide={handleCloseCreateForm}>
       <Modal.Header closeButton>
@@ -58,6 +67,16 @@ function AddZoneVert({ showCreateForm, handleCloseCreateForm }) {
               onChange={(e) => setAdresse(e.target.value)}
             ></Form.Control>
           </Form.Group>
+
+          <Form.Group controlId="typeZone">
+            <Form.Label>Type Zone</Form.Label>
+            <Form.Control as="select" custom>
+              {typeZoneVerts.map((type) => {
+                return <option value={type.nom}>{type.nom}</option>;
+              })}
+            </Form.Control>
+          </Form.Group>
+
           <Form.Group controlId="longitude">
             <Form.Label>Longitude</Form.Label>
             <Form.Control
