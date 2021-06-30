@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import { Button, DropdownButton, Form, Modal } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { createPersonnel, listPersonnels } from "../actions/PersonnelsActions";
 
-function AddPersonnel({
-  getPersonnels,
-  showCreateForm,
-  handleCloseCreateForm,
-}) {
+function AddPersonnel({ showCreateForm, handleCloseCreateForm }) {
   const dispatch = useDispatch();
   const [nom, setNom] = useState("");
   const [prenom, setPrenom] = useState("");
