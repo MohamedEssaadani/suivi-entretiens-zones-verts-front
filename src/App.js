@@ -4,6 +4,7 @@ import ZonesVerts from "./components/ZonesVerts";
 import PersonnelsList from "./components/PersonnelsList";
 import AssignTask from "./components/AssignTask";
 import Assignments from "./components/Assignments";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path="/personnels" component={PersonnelsList} />
               <Route path="/affecter-tache" component={AssignTask} />
               <Route path="/affectations" component={Assignments} />
+              <Route path="/dashboard" component={Dashboard} />
             </Switch>
           </div>
         </div>

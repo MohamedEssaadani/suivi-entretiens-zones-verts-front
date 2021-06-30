@@ -21,10 +21,10 @@ function Sidebar() {
         <hr className="sidebar-divider my-0" />
 
         <li className="nav-item active">
-          <a className="nav-link" href="index.html">
+          <Link className="nav-link" to="/dashboard">
             <i className="fas fa-fw fa-tachometer-alt"></i>
             <span>Tableau de board</span>
-          </a>
+          </Link>
         </li>
 
         <hr className="sidebar-divider" />
