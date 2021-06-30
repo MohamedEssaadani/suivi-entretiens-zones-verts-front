@@ -3,6 +3,9 @@ import {
   CREATE_PERSONNEL_FAIL,
   CREATE_PERSONNEL_REQUEST,
   CREATE_PERSONNEL_SUCCESS,
+  GET_PERSONNELS_LIST_TOTAL_FAIL,
+  GET_PERSONNELS_LIST_TOTAL_REQUEST,
+  GET_PERSONNELS_LIST_TOTAL_SUCCESS,
   GET_PERSONNEL_BY_ID_FAIL,
   GET_PERSONNEL_BY_ID_REQUEST,
   GET_PERSONNEL_BY_ID_SUCCESS,
@@ -28,6 +31,29 @@ const listPersonnels = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PERSONNELS_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+const listPersonnelsTotal = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: GET_PERSONNELS_LIST_TOTAL_REQUEST,
+    });
+
+    const { data } = await axios.get("http://localhost:8080/personnels");
+
+    dispatch({
+      type: GET_PERSONNELS_LIST_TOTAL_SUCCESS,
+      payload: data.page.totalElements,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_PERSONNELS_LIST_TOTAL_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -92,4 +118,9 @@ const createPersonnel = (personnel) => async (dispatch) => {
   }
 };
 
-export { listPersonnels, createPersonnel, getPersonnelById };
+export {
+  listPersonnels,
+  createPersonnel,
+  getPersonnelById,
+  listPersonnelsTotal,
+};

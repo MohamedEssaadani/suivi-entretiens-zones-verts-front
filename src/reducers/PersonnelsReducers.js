@@ -1,4 +1,7 @@
 import {
+  GET_PERSONNELS_LIST_TOTAL_FAIL,
+  GET_PERSONNELS_LIST_TOTAL_REQUEST,
+  GET_PERSONNELS_LIST_TOTAL_SUCCESS,
   GET_PERSONNEL_BY_ID_FAIL,
   GET_PERSONNEL_BY_ID_REQUEST,
   GET_PERSONNEL_BY_ID_SUCCESS,
@@ -22,6 +25,21 @@ const personnelsListReducer = (state = { personnels: [] }, action) => {
   }
 };
 
+//get personnels total elements
+const personnelsListTotalReducer = (state = { totalPersonnels: 0 }, action) => {
+  switch (action.type) {
+    case GET_PERSONNELS_LIST_TOTAL_REQUEST:
+      return { loading: true, totalPersonnels: 0 };
+
+    case GET_PERSONNELS_LIST_TOTAL_SUCCESS:
+      return { loading: false, totalPersonnels: action.payload };
+
+    case GET_PERSONNELS_LIST_TOTAL_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 //Single Personnel
 const personnelReducer = (state = { personnel: {} }, action) => {
   switch (action.type) {
@@ -53,4 +71,9 @@ const createPersonnelReducer = (state = { personnel: {} }, action) => {
   }
 };
 
-export { personnelsListReducer, createPersonnelReducer, personnelReducer };
+export {
+  personnelsListReducer,
+  createPersonnelReducer,
+  personnelReducer,
+  personnelsListTotalReducer,
+};

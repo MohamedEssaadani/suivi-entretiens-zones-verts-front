@@ -2,6 +2,9 @@ import {
   CREATE_ZONE_VERT_FAIL,
   CREATE_ZONE_VERT_REQUEST,
   CREATE_ZONE_VERT_SUCCESS,
+  GET_ZONES_VERTS_TOTAL_FAIL,
+  GET_ZONES_VERTS_TOTAL_REQUEST,
+  GET_ZONES_VERTS_TOTAL_SUCCESS,
   ZONES_VERTS_LIST_FAIL,
   ZONES_VERTS_LIST_REQUEST,
   ZONES_VERTS_LIST_SUCCESS,
@@ -22,6 +25,23 @@ export const zoneVertsReducer = (state = { zonesVerts: [] }, action) => {
   }
 };
 
+//get personnels total elements
+export const zoneVertsTotalReducer = (
+  state = { totalZonesVerts: 0 },
+  action
+) => {
+  switch (action.type) {
+    case GET_ZONES_VERTS_TOTAL_REQUEST:
+      return { loading: true, totalZonesVerts: 0 };
+
+    case GET_ZONES_VERTS_TOTAL_SUCCESS:
+      return { loading: false, totalZonesVerts: action.payload };
+    case GET_ZONES_VERTS_TOTAL_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 export const createZoneVertReducer = (state = { zoneVert: {} }, action) => {
   switch (action.type) {
     case CREATE_ZONE_VERT_REQUEST:

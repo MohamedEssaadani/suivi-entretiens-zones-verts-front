@@ -1,10 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { zoneVertsReducer } from "../reducers/ZonesVertsReducers";
+import {
+  zoneVertsReducer,
+  zoneVertsTotalReducer,
+} from "../reducers/ZonesVertsReducers";
 import {
   personnelReducer,
   personnelsListReducer,
+  personnelsListTotalReducer,
 } from "../reducers/PersonnelsReducers";
 import { listTachesReducer } from "../reducers/TachesReducers";
 import {
@@ -14,7 +18,9 @@ import {
 
 const reducer = combineReducers({
   zonesVerts: zoneVertsReducer,
+  zoneVertsTotal: zoneVertsTotalReducer,
   personnels: personnelsListReducer,
+  personnelsTotal: personnelsListTotalReducer,
   personnel: personnelReducer,
   taches: listTachesReducer,
   affectation: assignTaskReducer,

@@ -1,7 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { listPersonnelsTotal } from "../actions/PersonnelsActions";
+import { listZonesVertsTotal } from "../actions/ZonesVertsActions";
 
 function Dashboard() {
+  const dispatch = useDispatch();
+
+  const { totalPersonnels } = useSelector((state) => state.personnelsTotal);
+  const { totalZonesVerts } = useSelector((state) => state.zoneVertsTotal);
+
+  useEffect(() => {
+    dispatch(listPersonnelsTotal());
+    dispatch(listZonesVertsTotal());
+  }, [dispatch]);
   return (
     <>
       <div class="container-fluid">
@@ -11,14 +22,16 @@ function Dashboard() {
 
         <div class="row">
           <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card border-left-success shadow h-100 py-2">
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                       Zones Verts
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">42</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      {totalZonesVerts}
+                    </div>
                   </div>
                   <div class="col-auto">
                     <i className="fas fa-chart-area"></i>
@@ -29,15 +42,15 @@ function Dashboard() {
           </div>
 
           <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
+            <div class="card border-left-primary shadow h-100 py-2">
               <div class="card-body">
                 <div class="row no-gutters align-items-center">
                   <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                       Personnels
                     </div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      120
+                      {totalPersonnels}
                     </div>
                   </div>
                   <div class="col-auto">
