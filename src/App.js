@@ -5,6 +5,7 @@ import PersonnelsList from "./components/PersonnelsList";
 import AssignTask from "./components/AssignTask";
 import Assignments from "./components/Assignments";
 import Dashboard from "./components/Dashboard";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -22,12 +23,34 @@ function App() {
               </button>
             </nav>
             <Switch>
-              <Route path="/zones-verts" component={ZonesVerts} />
+              {/* <Route path="/zones-verts" component={ZonesVerts} />
               <Route path="/types-zones" component={ZonesVerts} />
               <Route path="/personnels" component={PersonnelsList} />
               <Route path="/affecter-tache" component={AssignTask} />
               <Route path="/affectations" component={Assignments} />
-              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/dashboard" component={Dashboard} /> */}
+              <Route path="/" component={Login} exact />
+              <Route
+                path="/admin"
+                render={({ match: { url } }) => (
+                  <>
+                    <Route path={`${url}/`} component={Dashboard} exact />
+                    <Route
+                      path={`${url}/affectations`}
+                      component={Assignments}
+                    />
+                    <Route
+                      path={`${url}/affecter-tache`}
+                      component={AssignTask}
+                    />
+                    <Route
+                      path={`${url}/personnels`}
+                      component={PersonnelsList}
+                    />
+                    <Route path={`${url}/zones-verts`} component={ZonesVerts} />
+                  </>
+                )}
+              />
             </Switch>
           </div>
         </div>

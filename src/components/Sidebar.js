@@ -18,7 +18,7 @@ function Sidebar() {
         <hr className="sidebar-divider my-0" />
 
         <li className="nav-item active">
-          <Link className="nav-link" to="/dashboard">
+          <Link className="nav-link" to="/admin/">
             <i className="fas fa-fw fa-tachometer-alt"></i>
             <span>Tableau de board</span>
           </Link>
@@ -35,7 +35,7 @@ function Sidebar() {
         </li> */}
 
         <li className="nav-item active">
-          <Link className="nav-link" to="/zones-verts">
+          <Link className="nav-link" to="/admin/zones-verts">
             <i className="fas fa-chart-area"></i>
             <span>Zones verts</span>
           </Link>
@@ -44,13 +44,13 @@ function Sidebar() {
         <hr className="sidebar-divider d-none d-md-block" />
         <div className="sidebar-heading">Personnels</div>
         <li className="nav-item active">
-          <Link className="nav-link" to="/personnels">
+          <Link className="nav-link" to="/admin/personnels">
             <i className="fas fa-users"></i>
             <span>Liste des personnels</span>
           </Link>
         </li>
         <li className="nav-item active">
-          <Link className="nav-link" to="/affectations">
+          <Link className="nav-link" to="/admin/affectations">
             <i className="fas fa-tasks"></i>
             <span>Affectations</span>
           </Link>
